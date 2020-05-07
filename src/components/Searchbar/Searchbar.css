@@ -1,0 +1,29 @@
+.SearchBar {
+    text-align: center;
+    margin: 22px;
+}
+
+.SearchBarInput {
+    width: 60%;
+    font-size: 15px;
+    padding: 13px 25px;
+    border: 1px solid rgb(124, 124, 124);
+    border-radius: 40px;
+}
+
+@media screen and (max-width: 992px) {
+    .SearchBarInput {
+        width: 90%;
+    }
+  }
+  
+  /* On screens that are 600px or less, set the background color to olive */
+  @media screen and (max-width: 600px) {
+    .SearchBarInput {
+        width: 90%;
+    }
+  }
+
+textarea:focus, input:focus {
+    outline: none;
+}

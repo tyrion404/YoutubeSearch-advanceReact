@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 
+import Navbar from './Navbar/Navbar';
+import Searchbar from './Searchbar/Searchbar';
+
 class App extends Component {
+
+    state = {
+        term: ''
+    };
+
+    onSearchSubmit = async (term) => {
+        console.log(term);
+    };
+
     render() {
         return (
             <div>
-                Youtube Search API
+                <Navbar />
+                <div className="ui container">
+                    <Searchbar onSubmit={this.onSearchSubmit} />
+                </div>
             </div>
         );
     }
