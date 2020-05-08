@@ -1,2 +1,5 @@
+import axios from 'axios';
 
-// ${process.env.REACT_APP_YTSearchAPI}
+export default axios.create({
+    baseURL: "https://www.googleapis.com/youtube/v3"
+});
