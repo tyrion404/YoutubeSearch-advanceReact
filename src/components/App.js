@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import youtube from '../API/youtube';
 import Navbar from './Navbar/Navbar';
 import Searchbar from './Searchbar/Searchbar';
+import VideoDetail from './VideoDetail/VideoDetail';
 import VideoList from './VideoList/VideoList';
 
 class App extends Component {
@@ -11,6 +12,10 @@ class App extends Component {
         videos: [],
         selectedVideo: null
     };
+
+    componentDidMount() {
+        this.onSearchSubmit('');
+    }
 
     onSearchSubmit = async (term) => {
         const response = await youtube.get("/search", {
@@ -22,7 +27,10 @@ class App extends Component {
                 key: process.env.REACT_APP_YTSearchAPI
             }
         });
-        this.setState({ videos: response.data.items });
+        this.setState({
+            videos: response.data.items,
+            selectedVideo: response.data.items[0]
+        });
     };
 
     onVideoSelect = (video) => {
@@ -35,10 +43,16 @@ class App extends Component {
                 <Navbar />
                 <div className="ui container">
                     <Searchbar onSubmit={this.onSearchSubmit} />
-                    <VideoList
-                        videos={this.state.videos}
-                        onVideoSelect={this.onVideoSelect}
-                    />
+                    <div className="ui grid">
+                        <div className="ui row">
+                            <VideoDetail className="responsiveVideoCom" video={this.state.selectedVideo} />
+                            <VideoList
+                                className="responsiveVideoListCom"
+                                videos={this.state.videos}
+                                onVideoSelect={this.onVideoSelect}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         );
