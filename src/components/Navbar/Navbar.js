@@ -7,7 +7,7 @@ class Navbar extends Component {
         return (
             <header>
                 <div className="ui container">
-                    <a className="logo" href="/">Search Youtube Videos</a>
+                    <a className="logo" href="/">Kartik</a>
                     <input id="nav" type="checkbox" />
                     <label htmlFor="nav"></label>
                     <nav>
